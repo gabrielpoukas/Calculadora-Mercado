@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MarketCalc | Gabriel Cardoso</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-content">
+            <span class="logo">🛒 Market<span>Calc</span></span>
+            <button id="theme-toggle" class="theme-btn">
+                <span id="theme-icon">🌙</span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="add-item-card">
+            <div class="input-row">
+                <div class="input-group">
+                    <label>Produto</label>
+                    <input type="text" id="item-nome" placeholder="Ex: Café Torrado">
+                </div>
+                <div class="input-group price-group">
+                    <label>Preço</label>
+                    <input type="number" id="item-valor" placeholder="0,00" step="0.01">
+                </div>
+            </div>
+            <button id="btn-adicionar" class="primary-btn">Adicionar ao Carrinho</button>
+        </section>
+
+        <section class="scanner-section">
+    <button id="btn-scan" class="secondary-btn">📷 Escanear Código de Barras</button>
+    <div id="interactive" class="viewport"></div> </section>
+
+        <div class="list-header">
+            <h2>Seus Itens</h2>
+            <span id="item-count">0 itens</span>
+        </div>
+
+        <ul id="lista-compras" class="shopping-list">
+            </ul>
+    </main>
+
+    <div class="summary-card">
+        <div class="summary-content">
+            <div class="total-info">
+                <span>Total da Compra</span>
+                <h3 id="total-valor">R$ 0,00</h3>
+            </div>
+            <button class="checkout-btn">Finalizar</button>
+        </div>
+    </div>
+
+    <footer class="footer-professional">
+        <div class="footer-line"></div>
+        <p>Desenvolvido por:</p>
+        <a href="https://www.linkedin.com/in/gabriel-alexandre-marques-cardoso-0041101ab/" target="_blank" class="profile-link">
+            <strong>Gabriel Cardoso</strong>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+        </a>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
