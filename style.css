@@ -34,11 +34,11 @@ body {
     background-color: var(--bg);
     color: var(--text-main);
     transition: background 0.3s ease;
-    padding-bottom: 140px; /* Espaço para a barra de total */
+    padding-bottom: 140px;
 }
 
 .container {
-    max-width: 500px;
+    max-width: 600px;
     margin: 0 auto;
     padding: 20px 15px;
     display: flex;
@@ -47,7 +47,7 @@ body {
 }
 
 /* ==========================================================================
-   3. NAVEGAÇÃO (NAVBAR)
+   3. NAVEGAÇÃO
    ========================================================================== */
 .navbar {
     background: var(--surface);
@@ -59,7 +59,7 @@ body {
 }
 
 .nav-content {
-    max-width: 500px;
+    max-width: 600px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -86,7 +86,7 @@ body {
 }
 
 /* ==========================================================================
-   4. COMPONENTES (CARDS E BOTÕES)
+   4. COMPONENTES E CORREÇÃO DE LAYOUT (DESKTOP)
    ========================================================================== */
 .add-item-card, .scanner-area {
     background: var(--surface);
@@ -95,21 +95,23 @@ body {
     box-shadow: var(--shadow);
 }
 
-/* Inputs */
+/* CORREÇÃO AQUI: Alinhamento e largura mínima para evitar quebra no Desktop */
 .input-row {
     display: flex;
-    gap: 12px;
+    gap: 15px;
     margin-bottom: 16px;
+    align-items: flex-end; /* Alinha labels e inputs pela base */
 }
 
 .input-group {
     display: flex;
     flex-direction: column;
-    flex: 2;
+    flex: 3; /* Nome ganha mais espaço lateral */
 }
 
 .price-group {
-    flex: 1;
+    flex: 1.2;
+    min-width: 115px; /* Impede o campo de preço de ser esmagado */
 }
 
 .input-group label {
@@ -129,9 +131,9 @@ input {
     font-size: 16px;
     outline: none;
     height: 50px;
+    width: 100%;
 }
 
-/* Botões */
 .primary-btn {
     width: 100%;
     height: 55px;
@@ -159,7 +161,6 @@ input {
     gap: 8px;
 }
 
-/* Viewport Câmera */
 .viewport {
     width: 100%;
     height: 250px;
@@ -178,7 +179,7 @@ input {
 }
 
 /* ==========================================================================
-   5. FILTROS E LISTA DE COMPRAS
+   5. LISTA E FILTROS
    ========================================================================== */
 .list-controls {
     display: flex;
@@ -210,7 +211,6 @@ input {
     gap: 12px;
 }
 
-/* Card de Item Individual */
 .item-card {
     background: var(--surface);
     padding: 18px;
@@ -219,7 +219,6 @@ input {
     justify-content: space-between;
     align-items: center;
     box-shadow: var(--shadow);
-    transition: 0.2s ease;
 }
 
 .item-card.checked {
@@ -232,7 +231,6 @@ input {
     text-decoration: line-through;
 }
 
-/* Botão de Checkbox Customizado */
 .btn-check {
     width: 32px;
     height: 32px;
@@ -254,7 +252,7 @@ input {
 }
 
 /* ==========================================================================
-   6. INTERFACE DE TOTAL E FOOTER
+   6. RESUMO DE TOTAL E FOOTER
    ========================================================================== */
 .summary-card {
     position: fixed;
@@ -302,7 +300,7 @@ input {
     margin-top: 8px;
 }
 
-/* Filtro Switch (Slider) */
+/* Switch Filtro */
 .switch {
     position: relative;
     display: inline-block;
@@ -353,10 +351,15 @@ input:checked + .slider:before {
    ========================================================================== */
 @media (max-width: 480px) {
     .input-row {
-        flex-direction: column;
+        flex-direction: column; 
+        align-items: stretch;
         gap: 15px;
     }
     
+    .price-group {
+        min-width: 100%;
+    }
+
     .viewport {
         height: 220px;
     }
