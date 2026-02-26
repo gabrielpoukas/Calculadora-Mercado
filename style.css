@@ -1,3 +1,6 @@
+/* ==========================================================================
+   1. VARIÁVEIS E TEMAS
+   ========================================================================== */
 :root {
     --bg: #F0F4F8;
     --surface: #FFFFFF;
@@ -17,6 +20,9 @@
     --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
 }
 
+/* ==========================================================================
+   2. RESET E ESTILOS GERAIS
+   ========================================================================== */
 * {
     margin: 0;
     padding: 0;
@@ -27,10 +33,22 @@
 body {
     background-color: var(--bg);
     color: var(--text-main);
-    transition: 0.3s;
-    padding-bottom: 140px;
+    transition: background 0.3s ease;
+    padding-bottom: 140px; /* Espaço para a barra de total */
 }
 
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* ==========================================================================
+   3. NAVEGAÇÃO (NAVBAR)
+   ========================================================================== */
 .navbar {
     background: var(--surface);
     padding: 20px;
@@ -67,15 +85,9 @@ body {
     font-size: 1.2rem;
 }
 
-.container {
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 20px 15px;
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-}
-
+/* ==========================================================================
+   4. COMPONENTES (CARDS E BOTÕES)
+   ========================================================================== */
 .add-item-card, .scanner-area {
     background: var(--surface);
     padding: 24px;
@@ -83,6 +95,7 @@ body {
     box-shadow: var(--shadow);
 }
 
+/* Inputs */
 .input-row {
     display: flex;
     gap: 12px;
@@ -118,6 +131,7 @@ input {
     height: 50px;
 }
 
+/* Botões */
 .primary-btn {
     width: 100%;
     height: 55px;
@@ -145,6 +159,7 @@ input {
     gap: 8px;
 }
 
+/* Viewport Câmera */
 .viewport {
     width: 100%;
     height: 250px;
@@ -162,10 +177,29 @@ input {
     object-fit: cover;
 }
 
+/* ==========================================================================
+   5. FILTROS E LISTA DE COMPRAS
+   ========================================================================== */
+.list-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
 .list-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 5px;
+}
+
+.filter-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    color: var(--text-sub);
+    font-weight: 600;
     padding: 0 5px;
 }
 
@@ -176,6 +210,7 @@ input {
     gap: 12px;
 }
 
+/* Card de Item Individual */
 .item-card {
     background: var(--surface);
     padding: 18px;
@@ -184,8 +219,43 @@ input {
     justify-content: space-between;
     align-items: center;
     box-shadow: var(--shadow);
+    transition: 0.2s ease;
 }
 
+.item-card.checked {
+    opacity: 0.5;
+    background: var(--bg);
+    border: 1px dashed var(--text-sub);
+}
+
+.item-card.checked strong {
+    text-decoration: line-through;
+}
+
+/* Botão de Checkbox Customizado */
+.btn-check {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    border: 2px solid var(--accent);
+    background: transparent;
+    color: var(--accent);
+    cursor: pointer;
+    font-weight: 800;
+    margin-right: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-check.active {
+    background: var(--accent);
+    color: white;
+}
+
+/* ==========================================================================
+   6. INTERFACE DE TOTAL E FOOTER
+   ========================================================================== */
 .summary-card {
     position: fixed;
     bottom: 25px;
@@ -232,6 +302,55 @@ input {
     margin-top: 8px;
 }
 
+/* Filtro Switch (Slider) */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 20px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--accent);
+}
+
+input:checked + .slider:before {
+    transform: translateX(20px);
+}
+
+/* ==========================================================================
+   7. MEDIA QUERIES (RESPONSIVIDADE)
+   ========================================================================== */
 @media (max-width: 480px) {
     .input-row {
         flex-direction: column;
